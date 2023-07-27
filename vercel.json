@@ -1,11 +1,11 @@
-{
-  "builds": [
-    {
-      "src": "yarn run build",
-      "use": "@vercel/static-build",
-      "config": {
-        "NODE_OPTIONS": "--openssl-legacy-provider"
-      }
-    }
-  ]
-}
+// {
+//   "builds": [
+//     {
+//       "src": "yarn run build",
+//       "use": "@vercel/static-build",
+//       "config": {
+//         "NODE_OPTIONS": "--openssl-legacy-provider"
+//       }
+//     }
+//   ]
+// }
