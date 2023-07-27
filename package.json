@@ -35,8 +35,5 @@
     "svg-sprite-loader": "^4.1.6",
     "vue-template-compiler": "^2.6.11"
   },
-	// "engines": {
-	//   "node": ">=16"
-	// },
   "homepage": "https://jakhuang.github.io/form-generator"
 }
