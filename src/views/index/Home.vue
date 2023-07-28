@@ -1,21 +1,25 @@
 <template>
   <div class="container">
+    <!-- 左侧模块 -->
     <div class="left-board">
       <div class="logo-wrapper">
         <div class="logo">
-          <img :src="logo" alt="logo"> Form Generator
-          <a class="github" href="https://github.com/JakHuang/form-generator" target="_blank">
+          <img :src="logo" alt="logo"> 奎奎 element-UI低代码开发
+          <a class="github" href="http://blogs.kuikui520.top" target="_blank">
             <img src="https://github.githubassets.com/pinned-octocat.svg" alt>
           </a>
         </div>
       </div>
+      <!-- 左侧组件数据 -->
       <el-scrollbar class="left-scrollbar">
         <div class="components-list">
           <div v-for="(item, listIndex) in leftComponents" :key="listIndex">
+            <!-- 组件标题 -->
             <div class="components-title">
               <svg-icon icon-class="component" />
               {{ item.title }}
             </div>
+            <!-- 组件合集 -->
             <draggable
               class="components-draggable"
               :list="item.list"
@@ -31,6 +35,7 @@
                 class="components-item"
                 @click="addComponent(element)"
               >
+                <!-- 组件个体 -->
                 <div class="components-body">
                   <svg-icon :icon-class="element.__config__.tagIcon" />
                   {{ element.__config__.label }}
@@ -41,8 +46,9 @@
         </div>
       </el-scrollbar>
     </div>
-
+    <!-- 中间模块 -->
     <div class="center-board">
+      <!-- 中间顶部按钮 -->
       <div class="action-bar">
         <el-button icon="el-icon-video-play" type="text" @click="run">
           运行
@@ -60,6 +66,7 @@
           清空
         </el-button>
       </div>
+      <!-- 中间组件数据 -->
       <el-scrollbar class="center-scrollbar">
         <el-row class="center-board-row" :gutter="formConf.gutter">
           <el-form
@@ -89,7 +96,7 @@
         </el-row>
       </el-scrollbar>
     </div>
-
+    <!-- 右侧模块 -->
     <right-panel
       :active-data="activeData"
       :form-conf="formConf"
@@ -97,25 +104,28 @@
       @tag-change="tagChange"
       @fetch-data="fetchData"
     />
-
+    <!-- 运行预览 -->
     <form-drawer
       :visible.sync="drawerVisible"
       :form-data="formData"
       size="100%"
       :generate-conf="generateConf"
     />
+    <!-- 查看json -->
     <json-drawer
       size="60%"
       :visible.sync="jsonDrawerVisible"
       :json-str="JSON.stringify(formData)"
       @refresh="refreshJson"
     />
+    <!-- 导出vue文件类型 -->
     <code-type-dialog
       :visible.sync="dialogVisible"
       title="选择生成类型"
       :show-file-name="showFileName"
       @confirm="generate"
     />
+    <!-- 复制 代码 -->
     <input id="copyNode" type="hidden">
   </div>
 </template>
@@ -190,7 +200,7 @@ export default {
       saveIdGlobalDebounce: debounce(340, saveIdGlobal),
       leftComponents: [
         {
-          title: '输入型组件',
+          title: 'element-UI输入型组件',
           list: inputComponents
         },
         {
